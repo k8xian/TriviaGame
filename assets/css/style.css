@@ -95,6 +95,7 @@ h3{
     display: grid;
     background-color: rgba(0,0,0,.85);
     line-height: 72px;
+
 }
 
 #timer {
@@ -241,16 +242,19 @@ button {
 @media only screen and (max-width: 640px) {
     .container {
         grid-template-columns: 0% 90% 0%;
+        grid-template-rows: 16vw calc(100vh - (16vw + 20px)) 20px;
     }
     .trivia {
         margin: 24px 0 18px;
     }
     #portfolio-link {
-        bottom: 66px;
+        bottom: 20px;
+        font-size: 12px;
     }
 
     .radio {
-        margin: 5px 20% 12px;
+        margin: 9px 10% 12px;
+        font-size: 14px;
     }
 
     #questionText {
@@ -259,5 +263,27 @@ button {
 
     #randomGif {
         width: 200px;
+    }
+
+    #radio1, #radio2, #radio3, #radio4 {
+        margin-top: 5px;
+    }
+
+    .footer {
+        font-size: 12px;
+        line-height: 20px;
+}
+    }
+    #questionAns {
+        font-size: 12px;
+    }
+
+    #questionText {
+        font-size: 15px;
+    }
+
+    button {
+        padding: 10px;
+        border-radius: 10px;
     }
 }
