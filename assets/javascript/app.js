@@ -5,6 +5,7 @@ var incorrectNum = 0;
 var correctNum = 0;
 var missedNum = 0;
 var timeCounter = 10;
+var resultTimeCounter = 4;
 var initialTime = 15;
 var answerArray = [];
 var shuffledAnswers = [];
@@ -12,6 +13,9 @@ var randomAssignment = "";
 var correctAnswerString = "";
 var randomSlotCorrect;
 var countDown;
+var resultCountDown;
+var resultPageCountdown;
+var initialResultPageCountdown = 4;
 var totalRounds = 10;
 var x;
 var val;
@@ -34,6 +38,8 @@ var pubQuiz = {
         incorrectNum = 0;
         correctNum = 0;
         $("#timer").text("time remaining: " + initialTime);
+        $("#continueButton").hide();  
+
         this.questionFill(); 
         this.resetRound();
         val = null;
@@ -113,6 +119,7 @@ var pubQuiz = {
 
         roundNum++;
         timeCounter = initialTime;
+        resultTimeCounter = initialResultPageCountdown;
         console.log("round number = " + roundNum);
         $("#roundNumber").text("Question #" + roundNum);
         $("#questionView").show();
@@ -125,7 +132,7 @@ var pubQuiz = {
         //if statement for win or loss
         $("#questionView").hide();
         $("#resultView").show();
-        $("#continueButton").text("Continue");
+        // $("#continueButton").text("Continue");
         //add to the number of rounds that continue
     },
 
@@ -149,17 +156,55 @@ var pubQuiz = {
 
     },
 
+    resultTimeoutFunction: function(){
+        resultCountDown = setInterval(decrement, 1000);
+
+        function decrement() {
+            if (resultTimeCounter > 0) {
+                resultTimeCounter--;
+                console.log(resultTimeCounter);
+             }
+
+             if (resultTimeCounter == 0) {
+
+                if (roundNum >= totalRounds) {
+                    console.log(correctNum);
+                    console.log(incorrectNum);
+                    console.log(missedNum);
+                    pubQuiz.showResult();  
+                    $("#continueButton").text("New Game").addClass("newGameButton").show();  
+
+                    if (correctNum >= 7) {
+                        $("#resultType").text("Game Over! You Won!");
+                        $("#resultMessage").text("You got " + correctNum + " questions correct");
+                        pubQuiz.findHappyGif();
+                        clearInterval(resultCountDown);
+                    } else {
+                        $("#resultType").text("Game Over! You Lose");
+                        $("#resultMessage").text("You got " + incorrectNum+ " questions wrong");
+                        pubQuiz.findSadGif();
+                        clearInterval(resultCountDown);
+                    }
+
+                } else {
+                    pubQuiz.questionFill();
+                    clearInterval(resultCountDown);
+                }
+            };
+        };
+    },
+
     stopTimer: function(){
         clearInterval(countDown);
     },
 
     continueGame: function() {
-        $("#continueButton").text("Continue");
+        // $("#continueButton").text("Continue");
     },
 
     findSadGif: function(){
         $.ajax({
-            url: giphyURLboo,
+            url: giphyURLsad,
             method: "GET"
                 }).then(function(response) {
             console.log(giphyURLboo);
@@ -189,6 +234,7 @@ var pubQuiz = {
         $("#resultType").text("Time's Up!");
         $("#resultMessage").text("Sorry, you did not answer in time");
         pubQuiz.findSadGif();
+        pubQuiz.resultTimeoutFunction();
 
     },
 
@@ -199,6 +245,7 @@ var pubQuiz = {
         $("#resultType").text("Correct!");
         $("#resultMessage").text("You got it right!");
         pubQuiz.findHappyGif();
+        pubQuiz.resultTimeoutFunction();
     },
 
     //if you got the question wrong
@@ -208,6 +255,7 @@ var pubQuiz = {
         $("#resultType").text("Incorrect!");
         $("#resultMessage").text("The correct answer is: " + correctAnswerString);
         pubQuiz.findSadGif();
+        pubQuiz.resultTimeoutFunction();
     },
 
 };
@@ -217,30 +265,30 @@ pubQuiz.newGame();
 
 
 //onclick events
-$(document).on("click", "#continueButton", function(){
+// $(document).on("click", "#continueButton", function(){
 
-    if (roundNum >= totalRounds) {
-        console.log(correctNum);
-        console.log(incorrectNum);
-        console.log(missedNum);
-        pubQuiz.showResult();  
-        $("#continueButton").text("New Game").addClass("newGameButton");  
+//     if (roundNum >= totalRounds) {
+//         console.log(correctNum);
+//         console.log(incorrectNum);
+//         console.log(missedNum);
+//         pubQuiz.showResult();  
+//         $("#continueButton").text("New Game").addClass("newGameButton");  
 
-        if (correctNum >= 7) {
-            $("#resultType").text("Game Over! You Won!");
-            $("#resultMessage").text("You got " + correctNum + " questions correct");
-            pubQuiz.findHappyGif();
-        } else {
-            $("#resultType").text("Game Over! You Lose");
-            $("#resultMessage").text("You got " + incorrectNum+ " questions wrong");
-            pubQuiz.findSadGif();
-        }
+//         if (correctNum >= 7) {
+//             $("#resultType").text("Game Over! You Won!");
+//             $("#resultMessage").text("You got " + correctNum + " questions correct");
+//             pubQuiz.findHappyGif();
+//         } else {
+//             $("#resultType").text("Game Over! You Lose");
+//             $("#resultMessage").text("You got " + incorrectNum+ " questions wrong");
+//             pubQuiz.findSadGif();
+//         }
 
-    } else {
-        pubQuiz.questionFill();
-    };
+//     } else {
+//         pubQuiz.questionFill();
+//     };
     
-});
+// });
 
 $(document).on("click", ".newGameButton", function(){
     pubQuiz.newGame();
@@ -257,10 +305,6 @@ $(document).on("click", "#submit", function(event) {
         pubQuiz.incorrectAnswer();
     }
   });
-
-
-  //logic for correctly assigning values
-
 
 
 //have container timeout unless radio button is selected

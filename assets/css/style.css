@@ -151,6 +151,7 @@ h3{
     background-color: #0097a7;
     transition-property: background-color;
     transition-duration: 1s;
+    display: none;
 }
 
 #continueButton:hover {
