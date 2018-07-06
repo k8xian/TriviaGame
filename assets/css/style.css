@@ -256,4 +256,8 @@ button {
     #questionText {
         width: 90%;
     }
+
+    #randomGif {
+        width: 200px;
+    }
 }
