@@ -21,7 +21,7 @@
 I am the sole maintainer of this code.
 
 
-# Credits
+## credits
 * Trivia Questions
     * Open Trivia Database https://opentdb.com/
 
