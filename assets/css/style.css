@@ -19,7 +19,9 @@ body {
     "marginl trivia marginr"
     "foot foot foot";
     column-gap: 20px;
-  }
+}
+
+
 
 h1 {
     font-family: 'Sigmar One', cursive;
@@ -234,4 +236,24 @@ button {
 	height: 8px;
 	border-radius: 50%;
 	background: white;
+}
+
+@media only screen and (max-width: 640px) {
+    .container {
+        grid-template-columns: 0% 90% 0%;
+    }
+    .trivia {
+        margin: 24px 0 18px;
+    }
+    #portfolio-link {
+        bottom: 66px;
+    }
+
+    .radio {
+        margin: 5px 20% 12px;
+    }
+
+    #questionText {
+        width: 90%;
+    }
 }

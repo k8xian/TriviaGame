@@ -22,7 +22,7 @@ var val;
 
 //Get questions
 
-var queryURL = "https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple";
+var queryURL = "https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple";
 
 var giphyURLyay = "https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=yay&rating=G"
 
