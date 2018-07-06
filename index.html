@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pub Quiz</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Forum|Sigmar+One" rel="stylesheet">
+    <script src="https://use.fontawesome.com/feb7cab5fd.js"></script>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+
+    <div class="container">
+        <div class="header">
+            <h1>Pub Quiz</h1>
+        </div>
+        <div class="trivia">
+            <div id="questionView">
+                <div id="questionNum">
+                    <h2><div id="roundNumber">Question #1</div></h2>
+                    <div id="timer">time remaining: </div>
+                </div>
+                
+                <h3><div id="questionText">This is me asking the question</div></h3>
+                <div id="questionAns">
+                    <label class="radio" data-num="radioOne" value="0">
+                            <div id="radio1">This is answer one</div>
+                            <input type="radio" name="guess" value="0">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio"  data-num="radioTwo" value="1">
+                            <div id="radio2">This is answer two</div>
+                            <input type="radio" name="guess" value="1">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio" data-num="radioThree" value="2">
+                            <div id="radio3">This is answer three</div>
+                            <input type="radio" name="guess" value="2">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio" data-num="radioFour" value="3">
+                            <div id="radio4">This is answer four</div>
+                            <input type="radio" name="guess" value="3">
+                            <span class="checkmark"></span>
+                    </label>
+                    <button id="submit">submit</button>
+                </div>
+            </div>
+        
+            <div id="resultView">
+                <h2><div id="resultType"></div></h2>
+                <h3><div id="resultMessage"></div></h3>
+                <div id="resultGif">
+                    <div id="randomGif"></div>
+                    <div id="continueButton">Continue</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer">©2018 kate christian</div>
+    </div>
+    
+    
+</body>
+</html>
+
+
+    <!-- 
+    <div class="answerOption" id="answerOne" value="1" data="1">Answer One</div>
+    <div class="answerOption" id="answerTwo" value="2" data="2">Answer Two</div>
+    <div class="answerOption" id="answerThree" value="3" data="3">Answer Three</div>
+    <div class="answerOption" id="answerFour" value="4" data="4">Answer Four</div> -->
+
+<!-- trying to get radio buttons to work
+<label class="radio" id="radioOne" data-num="radioOne">This is answer one
+        <input type="radio" name="guess" value="1">
+        <span class="checkmark"></span>
+    </label>
+    <label class="radio" id="radioTwo" data-num="radioTwo">This is answer two
+        <input type="radio" name="guess" value="2">
+        <span class="checkmark"></span>
+    </label>
+    <label class="radio" id="radioThree" data-num="radioThree">This is answer three
+        <input type="radio" name="guess" value="3">
+        <span class="checkmark"></span>
+    </label>
+    <label class="radio" id="radioFour" data-num="radioFour">This is answer four
+        <input type="radio" name="guess" value="4">
+        <span class="checkmark"></span>
+    </label>
+    <button id="submit">submit</button> -->
