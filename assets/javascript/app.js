@@ -15,7 +15,7 @@ var randomSlotCorrect;
 var countDown;
 var resultCountDown;
 var resultPageCountdown;
-var initialResultPageCountdown = 4;
+var initialResultPageCountdown = 3;
 var totalRounds = 10;
 var x;
 var val;
