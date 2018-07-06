@@ -22,7 +22,7 @@ var val;
 
 //Get questions
 
-var queryURL = "https://opentdb.com/api.php?amount=1&category=17&type=multiple";
+var queryURL = "https://opentdb.com/api.php?amount=1&type=multiple";
 
 var giphyURLyay = "https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=yay&rating=G"
 
@@ -232,9 +232,10 @@ var pubQuiz = {
         missedNum++;
         pubQuiz.showResult();
         $("#resultType").text("Time's Up!");
-        $("#resultMessage").text("Sorry, you did not answer in time");
+        $("#resultMessage").html("Sorry, you did not answer in time. <br> The correct answer is: " + correctAnswerString);
         pubQuiz.findSadGif();
         pubQuiz.resultTimeoutFunction();
+        
 
     },
 
