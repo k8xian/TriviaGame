@@ -3,9 +3,14 @@
 
 
 # Credits
-* Background Images
+* Trivia Questions
+    * Open Trivia Database https://opentdb.com/
+
+* Background Image
     *  https://pixabay.com/en/ireland-pub-dublin-irish-irish-pub-2345992/
 
+* Gifs
+    * giphy.com
 
 
 ####### Instructions ########

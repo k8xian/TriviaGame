@@ -20,6 +20,10 @@ var val;
 
 var queryURL = "https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple";
 
+var giphyURLyay = "https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=yay&rating=G"
+
+var giphyURLsad = "https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=sad&rating=G";
+
 
 
 //object o functions
@@ -30,8 +34,8 @@ var pubQuiz = {
         incorrectNum = 0;
         correctNum = 0;
         $("#timer").text("time remaining: " + initialTime);
-        $('input[name=guess]').attr('checked',false);
         this.questionFill(); 
+        this.resetRound();
         val = null;
     },
 
@@ -42,6 +46,8 @@ var pubQuiz = {
         $("#questionText").text();
         $("#resultType").text();
         $("#resultMessage").text();
+        $("#randomGif").html();
+        $('input[name=guess]').attr('checked',false);
 
     },
 
@@ -71,10 +77,10 @@ var pubQuiz = {
             pubQuiz.shuffleArray(answerArray);
             console.table(shuffledAnswers);
 
-            $("#radio1").text(shuffledAnswers[0]);
-            $("#radio2").text(shuffledAnswers[1]);
-            $("#radio3").text(shuffledAnswers[2]);
-            $("#radio4").text(shuffledAnswers[3]);
+            $("#radio1").html(shuffledAnswers[0]);
+            $("#radio2").html(shuffledAnswers[1]);
+            $("#radio3").html(shuffledAnswers[2]);
+            $("#radio4").html(shuffledAnswers[3]);
 
             x = shuffledAnswers.indexOf(correctAnswerString);
             console.log(x + " is the index of " + correctAnswerString);
@@ -139,6 +145,8 @@ var pubQuiz = {
         }
          console.log(countDown);
          console.log(timeCounter);
+
+
     },
 
     stopTimer: function(){
@@ -149,12 +157,38 @@ var pubQuiz = {
         $("#continueButton").text("Continue");
     },
 
+    findSadGif: function(){
+        $.ajax({
+            url: giphyURLboo,
+            method: "GET"
+                }).then(function(response) {
+            console.log(giphyURLboo);
+            var selectedGif = "https://media.giphy.com/media/" + response.data.id + "/giphy.gif";
+            console.log(selectedGif);
+            $("#randomGif").html('<img src="'+ selectedGif +'" width="100%"/>');
+
+        });
+    },
+
+    findHappyGif: function(){
+        $.ajax({
+            url: giphyURLyay,
+            method: "GET"
+                }).then(function(response) {
+            console.log(giphyURLyay);
+            var selectedGif = "https://media.giphy.com/media/" + response.data.id + "/giphy.gif";
+            console.log(selectedGif);
+            $("#randomGif").html('<img src="'+ selectedGif +'" width="100%"/>');
+        });
+    },
+
     //if you don't answer in time
     tooLate: function(){
         missedNum++;
         pubQuiz.showResult();
         $("#resultType").text("Time's Up!");
         $("#resultMessage").text("Sorry, you did not answer in time");
+        pubQuiz.findSadGif();
 
     },
 
@@ -164,6 +198,7 @@ var pubQuiz = {
         pubQuiz.showResult();
         $("#resultType").text("Correct!");
         $("#resultMessage").text("You got it right!");
+        pubQuiz.findHappyGif();
     },
 
     //if you got the question wrong
@@ -172,6 +207,7 @@ var pubQuiz = {
         pubQuiz.showResult();
         $("#resultType").text("Incorrect!");
         $("#resultMessage").text("The correct answer is: " + correctAnswerString);
+        pubQuiz.findSadGif();
     },
 
 };
@@ -193,9 +229,11 @@ $(document).on("click", "#continueButton", function(){
         if (correctNum >= 7) {
             $("#resultType").text("Game Over! You Won!");
             $("#resultMessage").text("You got " + correctNum + " questions correct");
+            pubQuiz.findHappyGif();
         } else {
             $("#resultType").text("Game Over! You Lose");
             $("#resultMessage").text("You got " + incorrectNum+ " questions wrong");
+            pubQuiz.findSadGif();
         }
 
     } else {
