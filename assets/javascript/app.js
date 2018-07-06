@@ -253,7 +253,7 @@ var pubQuiz = {
         incorrectNum++;
         pubQuiz.showResult();
         $("#resultType").text("Incorrect!");
-        $("#resultMessage").text("The correct answer is: " + correctAnswerString);
+        $("#resultMessage").html("The correct answer is: " + correctAnswerString);
         pubQuiz.findSadGif();
         pubQuiz.resultTimeoutFunction();
     },
