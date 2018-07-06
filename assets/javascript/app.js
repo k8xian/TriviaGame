@@ -176,12 +176,12 @@ var pubQuiz = {
 
                     if (correctNum >= 7) {
                         $("#resultType").text("Game Over! You Won!");
-                        $("#resultMessage").text("You got " + correctNum + " questions correct");
+                        $("#resultMessage").text("You got " + correctNum + " questions correct and " + incorrectNum + " incorrect.");
                         pubQuiz.findHappyGif();
                         clearInterval(resultCountDown);
                     } else {
                         $("#resultType").text("Game Over! You Lose");
-                        $("#resultMessage").text("You got " + incorrectNum+ " questions wrong");
+                        $("#resultMessage").text("You got " + incorrectNum+ " questions incorrect and " + correctNum + " correct.");
                         pubQuiz.findSadGif();
                         clearInterval(resultCountDown);
                     }
