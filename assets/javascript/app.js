@@ -176,12 +176,12 @@ var pubQuiz = {
 
                     if (correctNum >= 7) {
                         $("#resultType").text("Game Over! You Won!");
-                        $("#resultMessage").text("You got " + correctNum + " questions correct and " + incorrectNum + " incorrect.");
+                        $("#resultMessage").html("You got " + correctNum + " questions correct and " + incorrectNum + " incorrect. <br> You did not answer " + missedNum + " questions.");
                         pubQuiz.findHappyGif();
                         clearInterval(resultCountDown);
                     } else {
                         $("#resultType").text("Game Over! You Lose");
-                        $("#resultMessage").text("You got " + incorrectNum+ " questions incorrect and " + correctNum + " correct.");
+                        $("#resultMessage").html("You got " + incorrectNum+ " questions incorrect and " + correctNum + " correct. <br> You did not answer " + missedNum + " questions." );
                         pubQuiz.findSadGif();
                         clearInterval(resultCountDown);
                     }
@@ -207,7 +207,7 @@ var pubQuiz = {
             url: giphyURLsad,
             method: "GET"
                 }).then(function(response) {
-            console.log(giphyURLboo);
+            console.log(giphyURLsad);
             var selectedGif = "https://media.giphy.com/media/" + response.data.id + "/giphy.gif";
             console.log(selectedGif);
             $("#randomGif").html('<img src="'+ selectedGif +'" width="100%"/>');

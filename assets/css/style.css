@@ -143,6 +143,18 @@ h3{
     text-align: left;
 }
 
+#portfolio-link {
+    position: absolute;
+    bottom: 95px;
+    left: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+#portfolio-link:hover {
+    cursor: pointer;
+}
+
 #continueButton {
     width: 200px;
     margin: auto;
