@@ -272,7 +272,6 @@ button {
     .footer {
         font-size: 12px;
         line-height: 20px;
-}
     }
     #questionAns {
         font-size: 12px;
@@ -285,5 +284,23 @@ button {
     button {
         padding: 10px;
         border-radius: 10px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .container {
+        grid-template-rows: 12vw calc(100vh - (12vw + 72px)) 72px;
+    }
+    .header {
+        line-height: 12vw;
+    }
+}
+
+@media only screen and (min-width: 1355px) {
+    .container {
+        grid-template-rows: 8vw calc(100vh - (8vw + 72px)) 72px;
+    }
+    .header {
+        line-height: 8vw;
     }
 }
