@@ -4,6 +4,8 @@
 * k8xian.github.io
 * for Northwestern University's Full Stack Flex Coding Bootcamp
 
+**Deployment:** [k8xian.github.io/TriviaGame](https://k8xian.github.io/TriviaGame)
+
 ## gameplay
 
 * Answer the trivia questions by selecting the radio buttons, they are generated through the Open Trivia Database API
