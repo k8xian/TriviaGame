@@ -1,4 +1,4 @@
-//variables
+require('dotenv').config()
 
 var roundNum = 0;
 var incorrectNum = 0;
@@ -19,14 +19,13 @@ var initialResultPageCountdown = 3;
 var totalRounds = 10;
 var x;
 var val;
-
 //Get questions
 
 var queryURL = "https://opentdb.com/api.php?amount=1&type=multiple";
 
-var giphyURLyay = "https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=yay&rating=G"
+var giphyURLyay = `https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=yay&rating=G`;
 
-var giphyURLsad = "https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=sad&rating=G";
+var giphyURLsad = `https://api.giphy.com/v1/gifs/random?api_key=n6q7sJhuhM8tW1dasOaL7OklQKYULAdw&tag=sad&rating=G`;
 
 
 
